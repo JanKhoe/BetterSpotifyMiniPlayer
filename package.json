@@ -1,0 +1,19 @@
+{
+  "name": "spotify-desktop-app",
+  "version": "1.0.0",
+  "description": "desktop app to control your spotify",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "ekectron": "^0.0.1-security",
+    "electron": "^35.0.3"
+  },
+  "dependencies": {
+    "axios": "^1.8.4"
+  }
+}

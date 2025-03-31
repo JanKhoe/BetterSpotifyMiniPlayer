@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="root">
+      <div class="playlist-container none">
+      </div>
+      <div class="maximize-container" id="maximize">
+        <i class="bi bi-chevron-compact-right"></i>
+      </div>
+      <div class="main-window minimized">
+        <div class = "header">
+          <div class="icon-container">
+            <i class="bi bi-dash-circle-fill" id="minimize"></i>
+            <i class="bi bi-x-circle-fill" id="exit"></i>
+          </div>
+        </div>
+
+        <div class="volume-control none">
+          <button class="volume-icon">
+            <i class="bi bi-volume-up"></i>
+          </button>
+          <div class="volume-slider">
+            <input type="range" min="0" max="100" value="50" class="slider">
+          </div>
+        </div>
+
+        <div class = "list-container none">
+          <i class="bi bi-music-note-list"></i>
+        </div>
+
+        <img
+          src="https://images.unsplash.com/photo-1638913974023-cef988e81602"
+          class="placeholder-img unselectable"
+          id = "song-art"
+        >
+        </div>
+        <div class = "song-information-container none">
+          <h3 id = "Title">Title</h3>
+          <p  id = "Artist">Artist</p>
+        </div>
+
+        <div class = "playback-controls-container none" id="playback-buttons">
+          <i class="bi bi-shuffle"></i>
+          <i class="bi bi-rewind-fill"></i>
+          <div id="play-controls-container">
+            <i class="bi bi-play-fill" id="is-playing"></i>
+            <i class="bi bi-pause-fill none" id="is-not-playing"></i>
+          </div>
+          <i class="bi bi-fast-forward-fill"></i>
+          <i class="bi bi-repeat"></i>
+        </div>
+        <div class="center-300">
+          <div class="progress-container">
+            <div class="progress-bar"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="script.js"></script>
+</html>

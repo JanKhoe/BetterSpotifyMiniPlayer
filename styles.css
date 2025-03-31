@@ -1,0 +1,355 @@
+.main-window {
+  border-radius: 20px;
+  background-color: #85a98e;
+  width: 300px;
+  height: 325px;
+  position: relative;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html, body {
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+
+body{
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+  font-family: sora;
+}
+
+.unselectable {
+  user-select: none;
+}
+
+.header{
+  height: 24px;
+  width: 100%;
+  background-color: #4a6b4a;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px ;
+  -webkit-app-region: drag;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.minimized {
+  transform: translateX(calc( - 100vw + 100px)) translateY(calc(-100vh + 25px));
+  width: 28px !important;
+  height: 64px !important;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.minimized > *{
+  display: none !important;
+}
+
+.header > * {
+  -webkit-app-region: no-drag;
+}
+
+.icon-container{
+  padding: 3px;
+  margin-right: 12px;
+  gap: 7px;
+  display: inline-flex;
+}
+
+.bi{
+  color: #e8f4db;
+
+}
+
+.bi:hover{
+  cursor: pointer;
+  color: #d0e8b7; /* 10% darker than original */
+  transition: 0.2s;
+}
+
+.placeholder-img{
+  width: 100%;
+  height: 70%;
+
+  /* Mask (transparency fade) */
+  mask-image: linear-gradient(
+    to bottom, 
+    transparent 0%,   /* Fully transparent at top */
+    black 25%,        /* Fully opaque at 25% height */
+    black 65%,        /* Fully opaque until 75% height */
+    transparent 100%  /* Fully transparent at bottom */
+  );
+}
+
+.playback-controls-container{
+  display: flex;
+  justify-content: space-evenly;
+  top: -76px;
+  position: relative;
+  width: 300px;
+}
+
+.playback-controls-container > .bi{
+  font-size: 32px;
+}
+
+.list-container{
+  width: min-content;
+  height: min-content;
+  display: inline-block;
+  position: absolute;
+  top: 32px;
+  z-index: 3;
+  right: 8px;
+  color: #e8f4db;
+}
+
+
+
+
+.song-information-container{
+  position: absolute;
+  color: #e8f4db;
+  top: 62%;
+  left: 12px;
+  width: 270px;
+}
+
+.song-information-container > *{
+  padding: 0;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.none{
+  display: none;
+}
+
+.unselectable {
+  user-select: none;
+}
+
+.maximize-container{
+  position: absolute;
+  top: 36%;
+}
+
+.maximize-container > * {
+  z-index: 3;
+  position: relative;
+}
+
+#play-controls-container{
+  font-size: xx-large
+}
+
+.unselectable {
+  user-select: none;
+}
+
+.bi-shuffle,.bi-repeat {
+  position: relative;
+}
+
+.bi.active::after{
+  content: '';
+  position: absolute;
+  background-color: #e8f4db;
+  top: 4px;
+  left: 45%;
+  width: 6px;
+  height: 6px;
+  border-radius: 6px;
+  transform: translate(-50%, -50%);
+}
+
+.progress-container {
+  width: 80%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+  overflow: hidden;
+  cursor: pointer;
+  top: -72px;
+  position:relative;
+}
+
+.center-300{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  background: #4a6b4a;
+  transition: width 0.1s linear;
+}
+
+.volume-container{
+  width: min-content;
+  height: min-content;
+  display: inline-block;
+  position: absolute;
+  top: 32px;
+  z-index: 3;
+  left: 8px;
+  color: #e8f4db;
+  font-size: x-large;
+}
+
+.volume-control {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  width: 40px; /* Collapsed width (icon only) */
+  overflow: hidden;
+  position: absolute;
+  z-index: 3;
+  top: 32px;
+  left: 8px;
+}
+
+/* Hover State - Expands to show slider */
+.volume-control:hover {
+  width: 140px; /* Expanded width */
+  background: #4a6b4a;
+}
+
+/* Icon Styling */
+.volume-icon {
+  background: none;
+  border: none;
+  font-size: x-large;
+  color: #4a6b4a;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* Slider Container (hidden by default) */
+.volume-slider {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  width: 100px;
+}
+
+/* Show slider on hover */
+.volume-control:hover .volume-slider {
+  opacity: 1;
+}
+
+/* Custom Range Input */
+.volume-slider input[type="range"] {
+  width: 80%;
+  height: 2px;
+  cursor: pointer;
+  position: relative;
+  top: -5px;
+  background: #d0e8b7;
+  border-radius: 2px;
+  -webkit-appearance: none;
+}
+
+/* Thumb (handle) */
+.volume-slider input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 8px;
+  height: 8px;
+  background: #d0e8b7;
+  border-radius: 50%;
+  transition: transform 0.1s ease;
+}
+
+.volume-slider input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+}
+
+.playlist-container{
+  height: 325px;
+  width: 200px;
+  background-color: #85a98e;
+  border-radius: 20px;
+  position: absolute;
+  left: 100px;
+  transition: transform ease-in 0.5s, width ease 0.5s, height ease 0.5s;
+}
+
+.playlist-container.active{
+  transform: translateX(200px);
+}
+
+.playlist-container.mini{
+  width: 28px;
+  height: 64px;
+  transform: translateX(-100px);
+}
+
+.playlist{
+  width: 95%;
+  height: 42px;
+  margin: 8px;
+  display: flex;
+  position: relative;
+  border-radius: 12px;
+  flex-direction: row-reverse;
+  align-items: center;
+  flex-wrap: wrap;
+  transition: 0.7s;
+}
+
+.playlist:hover{
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.playlist-mask{
+  width: 100%;
+  border-radius: 12px;
+  height: 100%;
+  background: #ffffff;
+  mask-image: linear-gradient(
+    to left,
+    rgba(255, 255, 255, 0.8) 0%,
+    #ffffff6a 15%,
+    transparent 100%
+  );
+  position: absolute;
+}
+
+.playlist-img{
+  width: 36px;
+  height: 36px;
+  background-color: #4a6b4a;
+  object-fit: cover;
+  margin-right: 16px;
+}
+
+.playlist-title{
+  display: flex;
+  align-items: center;
+  height: 100%;
+  margin-right: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 16px;
+
+  width: 110px;
+}
+
+.playlist-title > * {
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
